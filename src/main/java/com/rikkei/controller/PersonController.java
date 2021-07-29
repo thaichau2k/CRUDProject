@@ -3,7 +3,8 @@ package com.rikkei.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;  
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;  
@@ -17,7 +18,7 @@ import com.rikkei.service.PersonService;
 public class PersonController {  
 	  @Autowired private PersonService personService;  
 	  
-	  @RequestMapping("/")  
+	  @RequestMapping(value = {"/", "/index"})  
 	  public String index(Model model) {  
 	    List<Person> persons = personService.getAllPerson();  
 
@@ -27,12 +28,14 @@ public class PersonController {
 	  }  
 
 	  @RequestMapping(value = "/add")  
+	  @Secured("ROLE_ADMIN")
 	  public String addPerson(Model model) {  
 	    model.addAttribute("person", new Person());  
 	    return "addPerson";  
 	  }  
 
 	  @RequestMapping(value = "/edit", method = RequestMethod.GET)  
+	  @Secured("ROLE_ADMIN")
 	  public String editPerson(@RequestParam("id") Long personId, Model model) {  
 	    Optional<Person> personEdit = personService.findPersonById(personId);  
 	    personEdit.ifPresent(person -> model.addAttribute("person", person));  
@@ -45,7 +48,8 @@ public class PersonController {
 	    return "redirect:/";  
 	  }  
 
-	  @RequestMapping(value = "/delete", method = RequestMethod.GET)  
+	  @RequestMapping(value = "/delete", method = RequestMethod.GET) 
+	  @Secured("ROLE_ADMIN")
 	  public String deleteUser(@RequestParam("id") Long personId, Model model) {  
 	    personService.deletePerson(personId);  
 	    return "redirect:/";  

@@ -30,7 +30,10 @@
         	</tr> 
     	</tbody> 
     </table>  
-    <a href="/add" class="btn btn-success">Add Person</a>  
-</div>  
+    <a href="/add" class="btn btn-success">Add Person</a> 
+    
+    <form th:action="@{/logout}" method="post" class="float-end">
+  		<input type="submit" value="Sign Out"/>
+	</form>
 </body>  
 </html>
