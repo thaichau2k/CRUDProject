@@ -15,6 +15,8 @@ import com.rikkei.service.UserDetailsServiceImpl;
 @EnableWebSecurity //Kích hoạt tính năng Web Security
 @EnableGlobalMethodSecurity(securedEnabled = true) //Giúp các annotation @Secured ở PersonController hoạt động.
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    //Phần bean em đọc vẫn chưa hiểu lắm, mới biết nó là một object
     @Bean
     public UserDetailsService userDetailsService() {
     	return new UserDetailsServiceImpl();
