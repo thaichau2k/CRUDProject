@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import com.rikkei.entity.Person;
 import com.rikkei.repository.PersonRepository;  
 
-@Service  
+/* Class này là để ta implement lại interface PersonService
+ * và định nghĩa các method đã tạo ở interface
+ */
+
+@Service  // Giúp spring xác định đây là một lớp service xử lý logic nghiệp vụ
 public class PersonServiceImpl implements PersonService {  
   @Autowired 
   private PersonRepository personRepository;  

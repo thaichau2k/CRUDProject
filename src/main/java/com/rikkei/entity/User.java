@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/* Mục đích class: Tạo các đối tượng người dùng với các trường 
+tên đăng nhập, mật khẩu, quyền hạn phục vụ cho phần authorization
+và authentication của spring security */
+
+//Các annotation tương tự class Person
 @Entity 
 @Table(name = "user")
 public class User {
