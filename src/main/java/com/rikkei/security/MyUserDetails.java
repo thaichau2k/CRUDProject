@@ -9,11 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.rikkei.entity.User;
 
-public class MyUserDetails implements UserDetails {
+/* Mặc định Spring Security cung cấp interface UserDetails để chứa thông tin người dùng
+ * Class này giúp ta đưa thông tin từ class User vào UserDetails.
+ */
 
-	/**
-	 * 
-	 */
+public class MyUserDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private User user;  
 	
@@ -21,7 +21,7 @@ public class MyUserDetails implements UserDetails {
 	public MyUserDetails(User user) {
 		this.user = user;
 	}
-
+	
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
